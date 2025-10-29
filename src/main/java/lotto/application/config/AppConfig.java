@@ -23,6 +23,6 @@ public class AppConfig {
     }
 
     public LottoApplication lottoApplication() {
-        return new LottoApplication(numberGenerator());
+        return new LottoApplication(printer(), numberGenerator());
     }
 }
