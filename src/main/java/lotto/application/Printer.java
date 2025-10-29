@@ -16,4 +16,8 @@ public interface Printer {
     void printPurchaseLottoAmount(long lottoAmount);
 
     void printAllBuyingLottos(List<Lotto> value);
+
+    void printWinningNumberRequest();
+
+    void printBonusNumberRequest();
 }

@@ -42,6 +42,18 @@ public class LottoPrinter implements Printer {
         }
     }
 
+    @Override
+    public void printWinningNumberRequest() {
+        printNewLine();
+        print("당첨 번호를 입력해 주세요.");
+    }
+
+    @Override
+    public void printBonusNumberRequest() {
+        printNewLine();
+        print("보너스 번호를 입력해 주세요.");
+    }
+
     private List<Integer> getSortedNumbers(Lotto lotto) {
         List<Integer> copyOfLotto = List.copyOf(lotto.getNumbers());
         return copyOfLotto.stream()
