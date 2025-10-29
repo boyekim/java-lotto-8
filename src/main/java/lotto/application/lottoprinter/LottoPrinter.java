@@ -1,6 +1,8 @@
 package lotto.application.lottoprinter;
 
+import java.util.List;
 import lotto.application.Printer;
+import lotto.domain.Lotto;
 
 public class LottoPrinter implements Printer {
     @Override
@@ -27,5 +29,29 @@ public class LottoPrinter implements Printer {
     public void printPurchaseLottoAmount(long lottoAmount) {
         printNewLine();
         printFormat("%s개를 구매했습니다.", String.valueOf(lottoAmount));
+        printNewLine();
+    }
+
+    @Override
+    public void printAllBuyingLottos(List<Lotto> value) {
+        for (Lotto lotto : value) {
+            List<Integer> sortedNumbers = getSortedNumbers(lotto);
+            List<String> numbers = convertNumbers(sortedNumbers);
+            String joinedNumbers = String.join(",", numbers);
+            print("[" + joinedNumbers + "]");
+        }
+    }
+
+    private List<Integer> getSortedNumbers(Lotto lotto) {
+        List<Integer> copyOfLotto = List.copyOf(lotto.getNumbers());
+        return copyOfLotto.stream()
+                .sorted()
+                .toList();
+    }
+
+    private static List<String> convertNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .map(String::valueOf)
+                .toList();
     }
 }
