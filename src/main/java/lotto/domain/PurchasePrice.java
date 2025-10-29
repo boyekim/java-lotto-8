@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.exception.LottoErrorCode;
+import lotto.exception.LottoException;
+
 public class PurchasePrice {
 
     private static final int DIVISOR_UNIT = 1000;
@@ -18,7 +21,7 @@ public class PurchasePrice {
 
     private static void validateIsDivisible(Long price) {
         if (price % DIVISOR_UNIT != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 %s로 나누어져야 합니다.");
+            throw new LottoException(LottoErrorCode.INVALID_PURCHASE_FORMAT, DIVISOR_UNIT);
         }
     }
 
@@ -26,7 +29,7 @@ public class PurchasePrice {
         try {
             return Long.parseLong(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자가 입력되어야 합니다.");
+            throw new LottoException(LottoErrorCode.INVALID_NUMBER_FORMAT);
         }
     }
 }
