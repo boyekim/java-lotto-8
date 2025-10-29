@@ -13,7 +13,16 @@ public class LottoApplication {
     }
 
     public void run() {
+        readPurchasePrice();
+    }
+
+    private PurchasePrice readPurchasePrice() {
         printer.printPurchaseAmountRequest();
-        PurchasePrice purchasePrice = PurchasePrice.from(reader.read());
+        try {
+            return PurchasePrice.from(reader.read());
+        } catch (IllegalArgumentException e) {
+            printer.print(e.getMessage());
+            return readPurchasePrice();
+        }
     }
 }
