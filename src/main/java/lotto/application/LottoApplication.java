@@ -1,6 +1,7 @@
 package lotto.application;
 
 import lotto.application.config.AppConfig;
+import lotto.domain.LottoAmount;
 import lotto.domain.PurchasePrice;
 
 public class LottoApplication {
@@ -13,7 +14,9 @@ public class LottoApplication {
     }
 
     public void run() {
-        readPurchasePrice();
+        PurchasePrice purchasePrice = readPurchasePrice();
+        LottoAmount lottoAmount = LottoAmount.from(purchasePrice.getValue());
+        printer.printPurchaseLottoAmount(lottoAmount.getValue());
     }
 
     private PurchasePrice readPurchasePrice() {

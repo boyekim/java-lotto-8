@@ -32,4 +32,8 @@ public class PurchasePrice {
             throw new LottoException(LottoErrorCode.INVALID_NUMBER_FORMAT);
         }
     }
+
+    public Long getValue() {
+        return value;
+    }
 }
