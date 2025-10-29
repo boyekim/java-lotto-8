@@ -1,5 +1,8 @@
 package lotto.application;
 
+import java.util.List;
+import lotto.domain.Lotto;
+
 public interface Printer {
 
     void print(String message);
@@ -11,4 +14,6 @@ public interface Printer {
     void printPurchaseAmountRequest();
 
     void printPurchaseLottoAmount(long lottoAmount);
+
+    void printAllBuyingLottos(List<Lotto> value);
 }
