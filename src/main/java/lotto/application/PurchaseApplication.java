@@ -1,25 +1,23 @@
 package lotto.application;
 
-import lotto.application.config.AppConfig;
 import lotto.domain.LottoAmount;
 import lotto.domain.PurchasePrice;
+import lotto.domain.dto.LottoAmountRequest;
 
 public class PurchaseApplication {
     private final Printer printer;
     private final Reader reader;
-    private final LottoApplication lottoApplication;
 
-    public PurchaseApplication(AppConfig appConfig) {
-        printer = appConfig.printer();
-        reader = appConfig.reader();
-        lottoApplication = appConfig.lottoApplication();
+    public PurchaseApplication(Printer printer, Reader reader) {
+        this.printer = printer;
+        this.reader = reader;
     }
 
-    public void run() {
+    public LottoAmountRequest run() {
         PurchasePrice purchasePrice = readPurchasePrice();
         LottoAmount lottoAmount = LottoAmount.from(purchasePrice.getValue());
         printer.printPurchaseLottoAmount(lottoAmount.getValue());
-        lottoApplication.run(lottoAmount);
+        return LottoAmountRequest.from(lottoAmount);
     }
 
     private PurchasePrice readPurchasePrice() {

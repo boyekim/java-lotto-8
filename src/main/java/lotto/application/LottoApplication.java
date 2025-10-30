@@ -6,6 +6,8 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoAmount;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
+import lotto.domain.dto.LottoAmountRequest;
+import lotto.domain.dto.LottoComparisonRequest;
 import lotto.exception.LottoException;
 
 public class LottoApplication {
@@ -27,11 +29,13 @@ public class LottoApplication {
         this.divideStrategy = divideStrategy;
     }
 
-    public void run(LottoAmount lottoAmount) {
+    public LottoComparisonRequest run(LottoAmountRequest lottoAmountRequest) {
+        LottoAmount lottoAmount = lottoAmountRequest.lottoAmount();
         List<Lotto> allLotto = makeLottos(lottoAmount.getValue(), new ArrayList<>());
         Lottos lottos = Lottos.from(allLotto);
         printer.printAllBuyingLottos(lottos.getValue());
         WinningNumbers winningNumbers = makeWinningNumbers();
+        return LottoComparisonRequest.of(lottos, winningNumbers);
     }
 
     private List<Lotto> makeLottos(long remainLottoAmount, List<Lotto> allLotto) {
