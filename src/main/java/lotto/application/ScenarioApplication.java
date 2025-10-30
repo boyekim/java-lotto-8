@@ -20,6 +20,6 @@ public class ScenarioApplication {
     public void run() {
         LottoAmountRequest lottoAmountRequest = purchaseApplication.run();
         LottoComparisonRequest lottoComparisonRequest = lottoApplication.run(lottoAmountRequest);
-        resultApplication.run(lottoComparisonRequest);
+        resultApplication.run(lottoComparisonRequest, lottoAmountRequest.purchasePrice());
     }
 }
