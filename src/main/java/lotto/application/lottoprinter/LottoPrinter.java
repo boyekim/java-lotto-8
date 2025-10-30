@@ -3,6 +3,7 @@ package lotto.application.lottoprinter;
 import java.util.List;
 import lotto.application.Printer;
 import lotto.domain.Lotto;
+import lotto.domain.prizelotto.PrizeLotto;
 
 public class LottoPrinter implements Printer {
     @Override
@@ -11,8 +12,8 @@ public class LottoPrinter implements Printer {
     }
 
     @Override
-    public void printFormat(String format, String message) {
-        System.out.printf(format, message);
+    public void printFormat(String format, Object... args) {
+        System.out.printf(format, args);
     }
 
     @Override
@@ -52,6 +53,35 @@ public class LottoPrinter implements Printer {
     public void printBonusNumberRequest() {
         printNewLine();
         print("보너스 번호를 입력해 주세요.");
+    }
+
+    @Override
+    public void printEachPrizeResult(PrizeLotto prizeLotto) {
+        String result = makeEachResult(prizeLotto);
+        printFormat(
+                result,
+                prizeLotto.getMatchCount(),
+                prizeLotto.getPrizeMoneyToPrint(),
+                prizeLotto.getCount()
+        );
+        printNewLine();
+    }
+
+    @Override
+    public void printWinningStatistics() {
+        printNewLine();
+        print("당첨 통계");
+        print("---");
+    }
+
+    private String makeEachResult(PrizeLotto prizeLotto) {
+        StringBuilder result = new StringBuilder("%s개 일치");
+        if (prizeLotto.getRank() == 2) {
+            result.append(", 보너스 볼 일치 (%s원) - %s개");
+            return result.toString();
+        }
+        result.append(" (%s원) - %s개");
+        return result.toString();
     }
 
     private List<Integer> getSortedNumbers(Lotto lotto) {
