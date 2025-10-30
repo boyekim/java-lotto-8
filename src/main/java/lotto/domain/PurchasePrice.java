@@ -5,7 +5,7 @@ import lotto.exception.LottoException;
 
 public class PurchasePrice {
 
-    private static final int DIVISOR_UNIT = 1000;
+    public static final int DIVISOR_UNIT = 1000;
 
     private Long value;
 

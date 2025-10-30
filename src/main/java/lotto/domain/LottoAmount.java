@@ -2,8 +2,6 @@ package lotto.domain;
 
 public class LottoAmount {
 
-    private static final int DIVISOR_UNIT = 1000;
-
     private final long value;
 
     private LottoAmount(long value) {
@@ -11,7 +9,7 @@ public class LottoAmount {
     }
 
     public static LottoAmount from(long purchasePrice) {
-        long lottoAmount = purchasePrice / DIVISOR_UNIT;
+        long lottoAmount = purchasePrice / PurchasePrice.DIVISOR_UNIT;
         return new LottoAmount(lottoAmount);
     }
 
