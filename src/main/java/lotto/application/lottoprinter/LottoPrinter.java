@@ -38,7 +38,7 @@ public class LottoPrinter implements Printer {
         for (Lotto lotto : value) {
             List<Integer> sortedNumbers = getSortedNumbers(lotto);
             List<String> numbers = convertNumbers(sortedNumbers);
-            String joinedNumbers = String.join(",", numbers);
+            String joinedNumbers = String.join(", ", numbers);
             print("[" + joinedNumbers + "]");
         }
     }
