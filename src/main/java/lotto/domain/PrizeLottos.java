@@ -8,8 +8,12 @@ public class PrizeLottos {
 
     private final List<PrizeLotto> value;
 
-    public PrizeLottos(List<PrizeLotto> value) {
+    private PrizeLottos(List<PrizeLotto> value) {
         this.value = value;
+    }
+
+    public static PrizeLottos from(List<PrizeLotto> value) {
+        return new PrizeLottos(value);
     }
 
     public List<PrizeLotto> getValue() {

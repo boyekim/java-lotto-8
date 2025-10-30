@@ -64,6 +64,6 @@ public class AppConfig {
                 new FourthPrize(),
                 new FifthPrize()
         );
-        return new PrizeLottos(new ArrayList<>(prizeLottos));
+        return PrizeLottos.from(new ArrayList<>(prizeLottos));
     }
 }
