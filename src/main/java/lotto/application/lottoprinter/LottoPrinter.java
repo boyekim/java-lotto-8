@@ -74,6 +74,11 @@ public class LottoPrinter implements Printer {
         print("---");
     }
 
+    @Override
+    public void printProfit(double profit) {
+        printFormat("총 수익률은 %.1f%%입니다.", profit);
+    }
+
     private String makeEachResult(PrizeLotto prizeLotto) {
         StringBuilder result = new StringBuilder("%s개 일치");
         if (prizeLotto.getRank() == 2) {

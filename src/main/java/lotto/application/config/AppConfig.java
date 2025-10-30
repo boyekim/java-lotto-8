@@ -14,11 +14,11 @@ import lotto.application.lottodivider.LottoDivider;
 import lotto.application.lottoprinter.LottoPrinter;
 import lotto.application.lottoreader.LottoReader;
 import lotto.application.randomnumbersgenerator.RandomNumbersGenerator;
+import lotto.domain.PrizeLottos;
 import lotto.domain.prizelotto.FifthPrize;
 import lotto.domain.prizelotto.FirstPrize;
 import lotto.domain.prizelotto.FourthPrize;
 import lotto.domain.prizelotto.PrizeLotto;
-import lotto.domain.PrizeLottos;
 import lotto.domain.prizelotto.SecondPrize;
 import lotto.domain.prizelotto.ThirdPrize;
 
@@ -49,7 +49,7 @@ public class AppConfig {
     }
 
     public ResultApplication resultApplication() {
-        return new ResultApplication(printer(), reader(), prizeLottos());
+        return new ResultApplication(printer(), prizeLottos());
     }
 
     public ScenarioApplication scenarioApplication() {

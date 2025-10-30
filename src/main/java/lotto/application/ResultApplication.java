@@ -3,24 +3,23 @@ package lotto.application;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.PrizeLottos;
+import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
 import lotto.domain.dto.LottoComparisonRequest;
 import lotto.domain.prizelotto.PrizeLotto;
-import lotto.domain.PrizeLottos;
 
 public class ResultApplication {
 
     private final Printer printer;
-    private final Reader reader;
     private final PrizeLottos prizeLottos;
 
-    public ResultApplication(Printer printer, Reader reader, PrizeLottos prizeLottos) {
+    public ResultApplication(Printer printer, PrizeLottos prizeLottos) {
         this.printer = printer;
-        this.reader = reader;
         this.prizeLottos = prizeLottos;
     }
 
-    public void run(LottoComparisonRequest lottoComparisonRequest) {
+    public void run(LottoComparisonRequest lottoComparisonRequest, PurchasePrice purchasePrice) {
         Lottos lottos = lottoComparisonRequest.lottos();
         WinningNumbers winningNumbers = lottoComparisonRequest.winningNumbers();
         for (Lotto lotto : lottos.getValue()) {
@@ -30,6 +29,21 @@ public class ResultApplication {
         }
         prizeLottos.sortByRank();
         printResult();
+        double profit = calculateProfit(purchasePrice);
+        printProfit(profit);
+    }
+
+    private void printProfit(double profit) {
+        printer.printProfit(profit);
+    }
+
+    private double calculateProfit(PurchasePrice purchasePrice) {
+        List<PrizeLotto> allPrizeLotto = prizeLottos.getValue();
+        long total = 0;
+        for (PrizeLotto prizeLotto : allPrizeLotto) {
+            total += prizeLotto.calculateTotalPrize();
+        }
+        return ((double) total / purchasePrice.getValue()) * 100;
     }
 
     private void printResult() {

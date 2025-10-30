@@ -25,4 +25,6 @@ public interface Printer {
     void printEachPrizeResult(PrizeLotto prizeLotto);
 
     void printWinningStatistics();
+
+    void printProfit(double profit);
 }
