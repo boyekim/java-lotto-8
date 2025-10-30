@@ -16,23 +16,13 @@ public abstract class PrizeLotto {
 
     public abstract boolean isSatisfyWinningRequirement(int mainMatchCount, boolean isBonusMatch);
 
-    public int getRank() {
-        return prize.getRank();
-    }
+    public abstract int getRank();
 
-    public int getCount() {
-        return count;
-    }
+    public abstract int getMatchCount();
 
-    public int getMatchCount() {
-        return prize.getMatchCount();
-    }
+    public abstract int getCount();
 
-    public long getPrizeMoney() {
-        return prize.getPrizeMoney();
-    }
+    public abstract String getPrizeMoneyToPrint();
 
-    public String getPrizeMoneyToPrint() {
-        return prize.getPrizeMoneyToPrint();
-    }
+    public abstract long calculateTotalPrize();
 }
