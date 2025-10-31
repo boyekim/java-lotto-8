@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 import lotto.exception.LottoErrorCode;
 import lotto.exception.LottoException;
+import lotto.exception.LottoStateException;
 
 public class WinningNumbers {
 
@@ -86,6 +87,9 @@ public class WinningNumbers {
     }
 
     public Integer getBonusNumber() {
+        if (bonusNumber == null) {
+            throw new LottoStateException(LottoErrorCode.BONUS_NUMBER_NOT_EXIST);
+        }
         return bonusNumber;
     }
 }

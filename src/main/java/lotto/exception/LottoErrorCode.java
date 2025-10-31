@@ -6,6 +6,7 @@ public enum LottoErrorCode {
     INVALID_LOTTO_NUMBER_COUNT("로또 번호는 %s개여야 합니다."),
     DUPLICATED_NUMBER_NOT_ALLOWED("중복된 번호가 존재합니다."),
     INVALID_NUMBER_RANGE("로또 번호는 %s이상 %s이하 여야 합니다."),
+    BONUS_NUMBER_NOT_EXIST("보너스 번호가 존재하지 않습니다."),
     ;
 
     private static final String PREFIX = "[ERROR] ";
