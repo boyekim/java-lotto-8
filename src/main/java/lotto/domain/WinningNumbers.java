@@ -41,7 +41,7 @@ public class WinningNumbers {
 
     private static void validateRangeOfNumber(Integer parsedBonusNumber) {
         if (parsedBonusNumber < START_NUMBER || parsedBonusNumber > END_NUMBER) {
-            throw new LottoException(LottoErrorCode.INVALID_NUMBER_RANGE);
+            throw new LottoException(LottoErrorCode.INVALID_NUMBER_RANGE, START_NUMBER, END_NUMBER);
         }
     }
 
