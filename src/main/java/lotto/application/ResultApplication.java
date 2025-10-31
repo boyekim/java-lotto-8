@@ -11,10 +11,16 @@ import lotto.domain.prizelotto.PrizeLotto;
 
 public class ResultApplication {
 
+    private final ResultMetricCalculateStrategy resultMetricCalculateStrategy;
     private final Printer printer;
     private final PrizeLottos prizeLottos;
 
-    public ResultApplication(Printer printer, PrizeLottos prizeLottos) {
+    public ResultApplication(
+            ResultMetricCalculateStrategy resultMetricCalculateStrategy,
+            Printer printer,
+            PrizeLottos prizeLottos
+    ) {
+        this.resultMetricCalculateStrategy = resultMetricCalculateStrategy;
         this.printer = printer;
         this.prizeLottos = prizeLottos;
     }
@@ -22,28 +28,23 @@ public class ResultApplication {
     public void run(LottoComparisonRequest lottoComparisonRequest, PurchasePrice purchasePrice) {
         Lottos lottos = lottoComparisonRequest.lottos();
         WinningNumbers winningNumbers = lottoComparisonRequest.winningNumbers();
+        findPrizeToAllLotto(lottos, winningNumbers);
+        prizeLottos.sortByRank();
+        printResult();
+        double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice.getValue(), prizeLottos.getValue());
+        printProfit(profit);
+    }
+
+    private void findPrizeToAllLotto(Lottos lottos, WinningNumbers winningNumbers) {
         for (Lotto lotto : lottos.getValue()) {
             int mainNumbersMatchCount = checkMatchCount(lotto, winningNumbers);
             boolean bonusNumberMatch = checkBonusNumberMatch(lotto, winningNumbers);
             findPrize(mainNumbersMatchCount, bonusNumberMatch);
         }
-        prizeLottos.sortByRank();
-        printResult();
-        double profit = calculateProfit(purchasePrice);
-        printProfit(profit);
     }
 
     private void printProfit(double profit) {
         printer.printProfit(profit);
-    }
-
-    private double calculateProfit(PurchasePrice purchasePrice) {
-        List<PrizeLotto> allPrizeLotto = prizeLottos.getValue();
-        long total = 0;
-        for (PrizeLotto prizeLotto : allPrizeLotto) {
-            total += prizeLotto.calculateTotalPrize();
-        }
-        return ((double) total / purchasePrice.getValue()) * 100;
     }
 
     private void printResult() {
