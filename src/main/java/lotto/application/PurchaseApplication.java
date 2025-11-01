@@ -17,7 +17,7 @@ public class PurchaseApplication {
         PurchasePrice purchasePrice = readPurchasePrice();
         LottoAmount lottoAmount = LottoAmount.from(purchasePrice.getValue());
         printer.printPurchaseLottoAmount(lottoAmount.getValue());
-        return LottoAmountRequest.from(lottoAmount, purchasePrice);
+        return LottoAmountRequest.of(lottoAmount, purchasePrice);
     }
 
     private PurchasePrice readPurchasePrice() {
