@@ -39,3 +39,7 @@ Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같�
 - [x] 당첨 통계를 출력한다.
 - [x] 수익률을 계산한다.
 - [x] 수익률을 출력한다.
+
+## 예외 상황
+- WinningNumber의 bonus number를 조회할때 null이라면 예외가 발생한다.
+  - 따로 저장하기 때문에 혹시 모를 상황에 대비하기 위함이다. 
