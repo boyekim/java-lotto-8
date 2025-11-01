@@ -8,7 +8,7 @@ public record LottoAmountRequest(
         PurchasePrice purchasePrice
 ) {
 
-    public static LottoAmountRequest from(LottoAmount lottoAmount, PurchasePrice purchasePrice) {
+    public static LottoAmountRequest of(LottoAmount lottoAmount, PurchasePrice purchasePrice) {
         return new LottoAmountRequest(lottoAmount, purchasePrice);
     }
 }
