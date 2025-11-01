@@ -5,6 +5,7 @@ import lotto.application.ResultMetricCalculateStrategy;
 import lotto.domain.prizelotto.PrizeLotto;
 
 public class LottoResultCalculator implements ResultMetricCalculateStrategy {
+
     @Override
     public double calculateProfit(long purchasePrice, List<PrizeLotto> allPrizeLotto) {
         long total = 0;
