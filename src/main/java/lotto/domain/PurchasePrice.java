@@ -7,7 +7,7 @@ public class PurchasePrice {
 
     public static final int DIVISOR_UNIT = 1000;
 
-    private Long value;
+    private final Long value;
 
     private PurchasePrice(Long value) {
         this.value = value;
