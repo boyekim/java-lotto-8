@@ -3,22 +3,22 @@ package lotto.domain.prizelotto;
 public class FifthPrize extends PrizeLotto {
 
     public FifthPrize() {
-        super(Prize.FIFTH_PRIZE);
+        super(LottoPrize.FIFTH_PRIZE);
     }
 
     @Override
     public boolean isSatisfyWinningRequirement(int mainMatchCount, boolean isBonusMatch) {
-        return mainMatchCount == prize.getMatchCount();
+        return mainMatchCount == lottoPrize.getMatchCount();
     }
 
     @Override
     public int getRank() {
-        return prize.getRank();
+        return lottoPrize.getRank();
     }
 
     @Override
     public int getMatchCount() {
-        return prize.getMatchCount();
+        return lottoPrize.getMatchCount();
     }
 
     @Override
@@ -28,11 +28,11 @@ public class FifthPrize extends PrizeLotto {
 
     @Override
     public String getPrizeMoneyToPrint() {
-        return prize.getPrizeMoneyToPrint();
+        return lottoPrize.getPrizeMoneyToPrint();
     }
 
     @Override
     public long calculateTotalPrize() {
-        return getCount() * prize.getPrizeMoney();
+        return getCount() * lottoPrize.getPrizeMoney();
     }
 }

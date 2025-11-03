@@ -2,10 +2,10 @@ package lotto.domain.prizelotto;
 
 public abstract class PrizeLotto {
 
-    protected final Prize prize;
+    protected final LottoPrize lottoPrize;
 
-    protected PrizeLotto(Prize prize) {
-        this.prize = prize;
+    protected PrizeLotto(LottoPrize lottoPrize) {
+        this.lottoPrize = lottoPrize;
     }
 
     int count;

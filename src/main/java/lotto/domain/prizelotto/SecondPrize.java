@@ -3,22 +3,22 @@ package lotto.domain.prizelotto;
 public class SecondPrize extends PrizeLotto {
 
     public SecondPrize() {
-        super(Prize.SECOND_PRIZE);
+        super(LottoPrize.SECOND_PRIZE);
     }
 
     @Override
     public boolean isSatisfyWinningRequirement(int mainMatchCount, boolean isBonusMatch) {
-        return mainMatchCount == prize.getMatchCount() && isBonusMatch;
+        return mainMatchCount == lottoPrize.getMatchCount() && isBonusMatch;
     }
 
     @Override
     public int getRank() {
-        return prize.getRank();
+        return lottoPrize.getRank();
     }
 
     @Override
     public int getMatchCount() {
-        return prize.getMatchCount();
+        return lottoPrize.getMatchCount();
     }
 
     @Override
@@ -28,11 +28,11 @@ public class SecondPrize extends PrizeLotto {
 
     @Override
     public String getPrizeMoneyToPrint() {
-        return prize.getPrizeMoneyToPrint();
+        return lottoPrize.getPrizeMoneyToPrint();
     }
 
     @Override
     public long calculateTotalPrize() {
-        return count * prize.getPrizeMoney();
+        return count * lottoPrize.getPrizeMoney();
     }
 }
