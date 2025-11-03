@@ -6,7 +6,7 @@ import lotto.domain.Lottos;
 import lotto.domain.PrizeLottos;
 import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
-import lotto.domain.dto.LottoComparisonRequest;
+import lotto.domain.dto.LottoComparisonDto;
 import lotto.domain.prizelotto.PrizeLotto;
 
 public class ResultApplication {
@@ -25,9 +25,9 @@ public class ResultApplication {
         this.prizeLottos = prizeLottos;
     }
 
-    public void run(LottoComparisonRequest lottoComparisonRequest, PurchasePrice purchasePrice) {
-        Lottos lottos = lottoComparisonRequest.lottos();
-        WinningNumbers winningNumbers = lottoComparisonRequest.winningNumbers();
+    public void run(LottoComparisonDto lottoComparisonDto, PurchasePrice purchasePrice) {
+        Lottos lottos = lottoComparisonDto.lottos();
+        WinningNumbers winningNumbers = lottoComparisonDto.winningNumbers();
         findPrizeToAllLotto(lottos, winningNumbers);
         prizeLottos.sortByRank();
         printResult();

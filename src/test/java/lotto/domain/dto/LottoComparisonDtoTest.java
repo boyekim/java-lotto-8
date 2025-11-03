@@ -9,7 +9,7 @@ import lotto.domain.WinningNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoComparisonRequestTest {
+class LottoComparisonDtoTest {
 
     @Test
     @DisplayName("구매 로또와 당첨 숫자를 담은 dto 생성시 구매 로또 정보의 정상 저장을 확인한다.")
@@ -22,8 +22,8 @@ class LottoComparisonRequestTest {
         WinningNumbers winningNumbers = beforeBonusNumber.bonusNumberFrom("9");
 
         // when
-        LottoComparisonRequest lottoComparisonRequest = LottoComparisonRequest.of(lottos, winningNumbers);
-        Lottos savedLottos = lottoComparisonRequest.lottos();
+        LottoComparisonDto lottoComparisonDto = LottoComparisonDto.of(lottos, winningNumbers);
+        Lottos savedLottos = lottoComparisonDto.lottos();
 
         // then
         assertThat(savedLottos.getValue())
@@ -45,8 +45,8 @@ class LottoComparisonRequestTest {
         WinningNumbers winningNumbers = beforeBonusNumber.bonusNumberFrom("9");
 
         // when
-        LottoComparisonRequest lottoComparisonRequest = LottoComparisonRequest.of(lottos, winningNumbers);
-        WinningNumbers savedWinningNumbers = lottoComparisonRequest.winningNumbers();
+        LottoComparisonDto lottoComparisonDto = LottoComparisonDto.of(lottos, winningNumbers);
+        WinningNumbers savedWinningNumbers = lottoComparisonDto.winningNumbers();
 
         // then
         assertThat(savedWinningNumbers)
