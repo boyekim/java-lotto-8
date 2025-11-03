@@ -60,4 +60,4 @@
 **IllegalStateException**
 
 - WinningNumber의 bonusNumber를 조회할때 null인 경우
-    - 따로 저장하기 때문에 추후 기능 확장, 리팩토링 등의 상황에서 null값을 조회할 수도 있겠다고 판단하여 이를 예방합니다.
+    - 위의 정보는 따로 저장되기 때문에 추후 기능 확장, 리팩토링 등의 상황에서 null값을 조회하는 경우를 예방한다.
