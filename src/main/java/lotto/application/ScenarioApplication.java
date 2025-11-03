@@ -1,7 +1,7 @@
 package lotto.application;
 
-import lotto.domain.dto.LottoPurchaseDto;
 import lotto.domain.dto.LottoComparisonDto;
+import lotto.domain.dto.LottoPurchaseDto;
 
 public class ScenarioApplication {
 
@@ -20,6 +20,6 @@ public class ScenarioApplication {
     public void run() {
         LottoPurchaseDto lottoPurchaseDto = purchaseApplication.run();
         LottoComparisonDto lottoComparisonDto = lottoApplication.run(lottoPurchaseDto);
-        resultApplication.run(lottoComparisonDto, lottoPurchaseDto.purchasePrice());
+        resultApplication.run(lottoComparisonDto, lottoPurchaseDto);
     }
 }

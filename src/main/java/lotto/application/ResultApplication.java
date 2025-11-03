@@ -7,6 +7,7 @@ import lotto.domain.PrizeLottos;
 import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
 import lotto.domain.dto.LottoComparisonDto;
+import lotto.domain.dto.LottoPurchaseDto;
 import lotto.domain.prizelotto.PrizeLotto;
 
 public class ResultApplication {
@@ -25,12 +26,13 @@ public class ResultApplication {
         this.prizeLottos = prizeLottos;
     }
 
-    public void run(LottoComparisonDto lottoComparisonDto, PurchasePrice purchasePrice) {
+    public void run(LottoComparisonDto lottoComparisonDto, LottoPurchaseDto lottoPurchaseDto) {
         Lottos lottos = lottoComparisonDto.lottos();
         WinningNumbers winningNumbers = lottoComparisonDto.winningNumbers();
         findPrizeToAllLotto(lottos, winningNumbers);
         prizeLottos.sortByRank();
         printResult();
+        PurchasePrice purchasePrice = lottoPurchaseDto.purchasePrice();
         double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice.getValue(), prizeLottos.getValue());
         printProfit(profit);
     }
