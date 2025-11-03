@@ -3,11 +3,10 @@ package lotto.application;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.domain.LottoAmount;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumbers;
-import lotto.domain.dto.LottoPurchaseDto;
 import lotto.domain.dto.LottoComparisonDto;
+import lotto.domain.dto.LottoPurchaseDto;
 import lotto.exception.LottoException;
 
 public class LottoApplication {
@@ -30,8 +29,8 @@ public class LottoApplication {
     }
 
     public LottoComparisonDto run(LottoPurchaseDto lottoPurchaseDto) {
-        LottoAmount lottoAmount = lottoPurchaseDto.lottoAmount();
-        List<Lotto> allLotto = makeLottos(lottoAmount.getValue(), new ArrayList<>());
+        long lottoAmount = lottoPurchaseDto.lottoAmount();
+        List<Lotto> allLotto = makeLottos(lottoAmount, new ArrayList<>());
         Lottos lottos = Lottos.from(allLotto);
         printer.printAllBuyingLottos(lottos.getValue());
         WinningNumbers winningNumbers = makeWinningNumbers();

@@ -4,7 +4,6 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Prizes;
-import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
 import lotto.domain.dto.LottoComparisonDto;
 import lotto.domain.dto.LottoPurchaseDto;
@@ -32,8 +31,8 @@ public class ResultApplication {
         findPrizeToAllLotto(lottos, winningNumbers);
         prizes.sortByRank();
         printResult();
-        PurchasePrice purchasePrice = lottoPurchaseDto.purchasePrice();
-        double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice.getValue(), prizes.getValue());
+        long purchasePrice = lottoPurchaseDto.purchasePrice();
+        double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice, prizes.getValue());
         printProfit(profit);
     }
 

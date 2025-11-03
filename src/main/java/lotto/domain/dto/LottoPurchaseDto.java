@@ -4,11 +4,11 @@ import lotto.domain.LottoAmount;
 import lotto.domain.PurchasePrice;
 
 public record LottoPurchaseDto(
-        LottoAmount lottoAmount,
-        PurchasePrice purchasePrice
+        long lottoAmount,
+        long purchasePrice
 ) {
 
     public static LottoPurchaseDto of(LottoAmount lottoAmount, PurchasePrice purchasePrice) {
-        return new LottoPurchaseDto(lottoAmount, purchasePrice);
+        return new LottoPurchaseDto(lottoAmount.getValue(), purchasePrice.getValue());
     }
 }
