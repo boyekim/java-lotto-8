@@ -8,7 +8,7 @@ import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
 import lotto.domain.dto.LottoComparisonDto;
 import lotto.domain.dto.LottoPurchaseDto;
-import lotto.domain.prizelotto.PrizeLotto;
+import lotto.domain.prizelotto.Prize;
 
 public class ResultApplication {
 
@@ -51,17 +51,17 @@ public class ResultApplication {
 
     private void printResult() {
         printer.printWinningStatistics();
-        List<PrizeLotto> allPrizeLotto = prizes.getValue();
-        for (PrizeLotto prizeLotto : allPrizeLotto) {
-            printer.printEachPrizeResult(prizeLotto);
+        List<Prize> allPrizes = prizes.getValue();
+        for (Prize prize : allPrizes) {
+            printer.printEachPrizeResult(prize);
         }
     }
 
     private void findPrize(int mainNumbersMatchCount, boolean bonusNumberMatch) {
-        List<PrizeLotto> prizelottos = prizes.getValue();
-        for (PrizeLotto prizelotto : prizelottos) {
-            if (prizelotto.isSatisfyWinningRequirement(mainNumbersMatchCount, bonusNumberMatch)) {
-                prizelotto.upCount();
+        List<Prize> prizes = this.prizes.getValue();
+        for (Prize prize : prizes) {
+            if (prize.isSatisfyWinningRequirement(mainNumbersMatchCount, bonusNumberMatch)) {
+                prize.upCount();
                 return;
             }
         }

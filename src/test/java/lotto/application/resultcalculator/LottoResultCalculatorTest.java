@@ -5,7 +5,7 @@ import java.util.List;
 import lotto.domain.prizelotto.FifthPrize;
 import lotto.domain.prizelotto.FirstPrize;
 import lotto.domain.prizelotto.FourthPrize;
-import lotto.domain.prizelotto.PrizeLotto;
+import lotto.domain.prizelotto.Prize;
 import lotto.domain.prizelotto.SecondPrize;
 import lotto.domain.prizelotto.ThirdPrize;
 import org.assertj.core.api.Assertions;
@@ -26,7 +26,7 @@ class LottoResultCalculatorTest {
         FourthPrize fourthPrize = new FourthPrize();
         FifthPrize fifthPrize = new FifthPrize();
         fifthPrize.upCount();
-        List<PrizeLotto> prizeLottos = new ArrayList<>(List.of(
+        List<Prize> prizes = new ArrayList<>(List.of(
                 firstPrize,
                 secondPrize,
                 thirdPrize,
@@ -35,7 +35,7 @@ class LottoResultCalculatorTest {
         ));
 
         // when
-        double profit = calculator.calculateProfit(purchasePrice, prizeLottos);
+        double profit = calculator.calculateProfit(purchasePrice, prizes);
         String result = String.format("%.1f", profit);
 
         // then

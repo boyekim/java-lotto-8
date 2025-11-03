@@ -1,6 +1,6 @@
 package lotto.domain.prizelotto;
 
-public class FirstPrize extends PrizeLotto {
+public class FirstPrize extends Prize {
 
     public FirstPrize() {
         super(LottoPrize.FIRST_PRIZE);

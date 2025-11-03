@@ -7,13 +7,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class PrizeLottoTest {
+class PrizeTest {
 
     @ParameterizedTest
     @DisplayName("각 로또의 당첨 조건을 확인한다.")
     @MethodSource("providePrizeLotto")
-    void satisfyWinningRequirement(int mainMatchCount, boolean isBonusMatch, PrizeLotto prizeLotto) {
-        boolean isSatisfyPrizeRule = prizeLotto.isSatisfyWinningRequirement(mainMatchCount, isBonusMatch);
+    void satisfyWinningRequirement(int mainMatchCount, boolean isBonusMatch, Prize prize) {
+        boolean isSatisfyPrizeRule = prize.isSatisfyWinningRequirement(mainMatchCount, isBonusMatch);
         Assertions.assertThat(isSatisfyPrizeRule).isTrue();
     }
 

@@ -2,7 +2,7 @@ package lotto.application;
 
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.domain.prizelotto.PrizeLotto;
+import lotto.domain.prizelotto.Prize;
 
 public interface Printer {
 
@@ -22,7 +22,7 @@ public interface Printer {
 
     void printBonusNumberRequest();
 
-    void printEachPrizeResult(PrizeLotto prizeLotto);
+    void printEachPrizeResult(Prize prize);
 
     void printWinningStatistics();
 

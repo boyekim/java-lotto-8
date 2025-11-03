@@ -3,7 +3,7 @@ package lotto.application.lottoprinter;
 import java.util.List;
 import lotto.application.Printer;
 import lotto.domain.Lotto;
-import lotto.domain.prizelotto.PrizeLotto;
+import lotto.domain.prizelotto.Prize;
 
 public class LottoPrinter implements Printer {
     @Override
@@ -56,13 +56,13 @@ public class LottoPrinter implements Printer {
     }
 
     @Override
-    public void printEachPrizeResult(PrizeLotto prizeLotto) {
-        String result = makeEachResult(prizeLotto);
+    public void printEachPrizeResult(Prize prize) {
+        String result = makeEachResult(prize);
         printFormat(
                 result,
-                prizeLotto.getMatchCount(),
-                prizeLotto.getPrizeMoneyToPrint(),
-                prizeLotto.getCount()
+                prize.getMatchCount(),
+                prize.getPrizeMoneyToPrint(),
+                prize.getCount()
         );
         printNewLine();
     }
@@ -79,9 +79,9 @@ public class LottoPrinter implements Printer {
         printFormat("총 수익률은 %.1f%%입니다.", profit);
     }
 
-    private String makeEachResult(PrizeLotto prizeLotto) {
+    private String makeEachResult(Prize prize) {
         StringBuilder result = new StringBuilder("%s개 일치");
-        if (prizeLotto.getRank() == 2) {
+        if (prize.getRank() == 2) {
             result.append(", 보너스 볼 일치 (%s원) - %s개");
             return result.toString();
         }

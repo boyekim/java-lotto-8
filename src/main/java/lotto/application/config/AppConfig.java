@@ -20,7 +20,7 @@ import lotto.domain.Prizes;
 import lotto.domain.prizelotto.FifthPrize;
 import lotto.domain.prizelotto.FirstPrize;
 import lotto.domain.prizelotto.FourthPrize;
-import lotto.domain.prizelotto.PrizeLotto;
+import lotto.domain.prizelotto.Prize;
 import lotto.domain.prizelotto.SecondPrize;
 import lotto.domain.prizelotto.ThirdPrize;
 
@@ -55,21 +55,21 @@ public class AppConfig {
     }
 
     public ResultApplication resultApplication() {
-        return new ResultApplication(resultMetricCalculateStrategy(), printer(), prizeLottos());
+        return new ResultApplication(resultMetricCalculateStrategy(), printer(), prizes());
     }
 
     public ScenarioApplication scenarioApplication() {
         return new ScenarioApplication(purchaseApplication(), lottoApplication(), resultApplication());
     }
 
-    public Prizes prizeLottos() {
-        List<PrizeLotto> prizeLottos = List.of(
+    public Prizes prizes() {
+        List<Prize> allPrize = List.of(
                 new FirstPrize(),
                 new SecondPrize(),
                 new ThirdPrize(),
                 new FourthPrize(),
                 new FifthPrize()
         );
-        return Prizes.from(new ArrayList<>(prizeLottos));
+        return Prizes.from(new ArrayList<>(allPrize));
     }
 }

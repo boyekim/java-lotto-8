@@ -1,10 +1,10 @@
 package lotto.domain.prizelotto;
 
-public abstract class PrizeLotto {
+public abstract class Prize {
 
     protected final LottoPrize lottoPrize;
 
-    protected PrizeLotto(LottoPrize lottoPrize) {
+    protected Prize(LottoPrize lottoPrize) {
         this.lottoPrize = lottoPrize;
     }
 
