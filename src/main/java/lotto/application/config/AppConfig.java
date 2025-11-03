@@ -16,7 +16,7 @@ import lotto.application.lottoprinter.LottoPrinter;
 import lotto.application.lottoreader.LottoReader;
 import lotto.application.randomnumbersgenerator.RandomNumbersGenerator;
 import lotto.application.resultcalculator.LottoResultCalculator;
-import lotto.domain.PrizeLottos;
+import lotto.domain.Prizes;
 import lotto.domain.prizelotto.FifthPrize;
 import lotto.domain.prizelotto.FirstPrize;
 import lotto.domain.prizelotto.FourthPrize;
@@ -62,7 +62,7 @@ public class AppConfig {
         return new ScenarioApplication(purchaseApplication(), lottoApplication(), resultApplication());
     }
 
-    public PrizeLottos prizeLottos() {
+    public Prizes prizeLottos() {
         List<PrizeLotto> prizeLottos = List.of(
                 new FirstPrize(),
                 new SecondPrize(),
@@ -70,6 +70,6 @@ public class AppConfig {
                 new FourthPrize(),
                 new FifthPrize()
         );
-        return PrizeLottos.from(new ArrayList<>(prizeLottos));
+        return Prizes.from(new ArrayList<>(prizeLottos));
     }
 }

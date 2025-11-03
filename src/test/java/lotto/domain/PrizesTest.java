@@ -13,7 +13,7 @@ import lotto.domain.prizelotto.ThirdPrize;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class PrizeLottosTest {
+class PrizesTest {
 
     @Test
     @DisplayName("rank값을 기준으로 내림차순 정렬을 확인한다.")
@@ -25,13 +25,13 @@ class PrizeLottosTest {
         PrizeLotto fourthPrize = new FourthPrize();
         PrizeLotto fifthPrize = new FifthPrize();
         List<PrizeLotto> lottos = List.of(firstPrize, secondPrize, thirdPrize, fourthPrize, fifthPrize);
-        PrizeLottos prizeLottos = PrizeLottos.from(new ArrayList<>(lottos));
+        Prizes prizes = Prizes.from(new ArrayList<>(lottos));
 
         // when
-        prizeLottos.sortByRank();
+        prizes.sortByRank();
 
         // then
-        assertThat(prizeLottos.getValue())
+        assertThat(prizes.getValue())
                 .containsExactly(
                         fifthPrize,
                         fourthPrize,
@@ -40,5 +40,4 @@ class PrizeLottosTest {
                         firstPrize
                 );
     }
-
 }

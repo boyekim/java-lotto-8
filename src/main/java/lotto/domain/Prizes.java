@@ -4,16 +4,16 @@ import java.util.Comparator;
 import java.util.List;
 import lotto.domain.prizelotto.PrizeLotto;
 
-public class PrizeLottos {
+public class Prizes {
 
     private final List<PrizeLotto> value;
 
-    private PrizeLottos(List<PrizeLotto> value) {
+    private Prizes(List<PrizeLotto> value) {
         this.value = value;
     }
 
-    public static PrizeLottos from(List<PrizeLotto> value) {
-        return new PrizeLottos(value);
+    public static Prizes from(List<PrizeLotto> value) {
+        return new Prizes(value);
     }
 
     public List<PrizeLotto> getValue() {

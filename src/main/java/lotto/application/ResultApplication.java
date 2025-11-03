@@ -3,7 +3,7 @@ package lotto.application;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
-import lotto.domain.PrizeLottos;
+import lotto.domain.Prizes;
 import lotto.domain.PurchasePrice;
 import lotto.domain.WinningNumbers;
 import lotto.domain.dto.LottoComparisonDto;
@@ -14,26 +14,26 @@ public class ResultApplication {
 
     private final ResultMetricCalculateStrategy resultMetricCalculateStrategy;
     private final Printer printer;
-    private final PrizeLottos prizeLottos;
+    private final Prizes prizes;
 
     public ResultApplication(
             ResultMetricCalculateStrategy resultMetricCalculateStrategy,
             Printer printer,
-            PrizeLottos prizeLottos
+            Prizes prizes
     ) {
         this.resultMetricCalculateStrategy = resultMetricCalculateStrategy;
         this.printer = printer;
-        this.prizeLottos = prizeLottos;
+        this.prizes = prizes;
     }
 
     public void run(LottoComparisonDto lottoComparisonDto, LottoPurchaseDto lottoPurchaseDto) {
         Lottos lottos = lottoComparisonDto.lottos();
         WinningNumbers winningNumbers = lottoComparisonDto.winningNumbers();
         findPrizeToAllLotto(lottos, winningNumbers);
-        prizeLottos.sortByRank();
+        prizes.sortByRank();
         printResult();
         PurchasePrice purchasePrice = lottoPurchaseDto.purchasePrice();
-        double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice.getValue(), prizeLottos.getValue());
+        double profit = resultMetricCalculateStrategy.calculateProfit(purchasePrice.getValue(), prizes.getValue());
         printProfit(profit);
     }
 
@@ -51,14 +51,14 @@ public class ResultApplication {
 
     private void printResult() {
         printer.printWinningStatistics();
-        List<PrizeLotto> allPrizeLotto = prizeLottos.getValue();
+        List<PrizeLotto> allPrizeLotto = prizes.getValue();
         for (PrizeLotto prizeLotto : allPrizeLotto) {
             printer.printEachPrizeResult(prizeLotto);
         }
     }
 
     private void findPrize(int mainNumbersMatchCount, boolean bonusNumberMatch) {
-        List<PrizeLotto> prizelottos = prizeLottos.getValue();
+        List<PrizeLotto> prizelottos = prizes.getValue();
         for (PrizeLotto prizelotto : prizelottos) {
             if (prizelotto.isSatisfyWinningRequirement(mainNumbersMatchCount, bonusNumberMatch)) {
                 prizelotto.upCount();
