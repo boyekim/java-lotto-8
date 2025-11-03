@@ -2,7 +2,7 @@ package lotto.application;
 
 import lotto.domain.LottoAmount;
 import lotto.domain.PurchasePrice;
-import lotto.domain.dto.LottoAmountRequest;
+import lotto.domain.dto.LottoPurchaseDto;
 
 public class PurchaseApplication {
     private final Printer printer;
@@ -13,11 +13,11 @@ public class PurchaseApplication {
         this.reader = reader;
     }
 
-    public LottoAmountRequest run() {
+    public LottoPurchaseDto run() {
         PurchasePrice purchasePrice = readPurchasePrice();
         LottoAmount lottoAmount = LottoAmount.from(purchasePrice.getValue());
         printer.printPurchaseLottoAmount(lottoAmount.getValue());
-        return LottoAmountRequest.of(lottoAmount, purchasePrice);
+        return LottoPurchaseDto.of(lottoAmount, purchasePrice);
     }
 
     private PurchasePrice readPurchasePrice() {

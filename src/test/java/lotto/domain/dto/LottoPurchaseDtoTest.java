@@ -8,7 +8,7 @@ import lotto.domain.PurchasePrice;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoAmountRequestTest {
+class LottoPurchaseDtoTest {
 
     @Test
     @DisplayName("로또 구매 정보를 담은 dto 생성을 확인한다.")
@@ -18,10 +18,10 @@ class LottoAmountRequestTest {
         LottoAmount lottoAmount = LottoAmount.from(5000);
 
         // when
-        LottoAmountRequest lottoAmountRequest = LottoAmountRequest.of(lottoAmount, purchasePrice);
+        LottoPurchaseDto lottoPurchaseDto = LottoPurchaseDto.of(lottoAmount, purchasePrice);
 
         // then
-        assertThat(lottoAmountRequest)
+        assertThat(lottoPurchaseDto)
                 .extracting(
                         request -> lottoAmount.getValue(),
                         request -> purchasePrice.getValue())
